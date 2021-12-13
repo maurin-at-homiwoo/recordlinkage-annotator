@@ -9,7 +9,7 @@ export default function RecordItem(props) {
   return (
     <ListItem alignItems="flex-start">
       <Typography component="p">
-        {props.itemText}
+        {props.itemName} : {props.itemText}
       </Typography>
     </ListItem>
 

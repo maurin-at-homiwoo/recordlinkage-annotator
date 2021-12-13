@@ -44,7 +44,7 @@ export default function Record(props) {
         {props.recordData.fields.map((value, index) => {
           return (
             <React.Fragment key={index.toString()}>
-              <RecordItem itemText={value[props.recordSource].value} />
+              <RecordItem itemText={value[props.recordSource].value} itemName={value[props.recordSource].name} />
               <Divider component="li" />
             </React.Fragment>
           )
