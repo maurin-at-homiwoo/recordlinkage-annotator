@@ -1,3 +1,11 @@
+Project forked from
+https://github.com/J535D165/recordlinkage-annotator
+
+Modification done : 
+- Add the column name in front of the value to ease understanding of each fields
+- Append matching result in a compact form in a file on hdd 
+- Skip the end of a matching session when a match is found (beware of multi-match though)
+
 # RecordLinkage ANNOTATOR
 
 *RecordLinkage ANNOTATOR* is a browser-based user interface for
