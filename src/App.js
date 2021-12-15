@@ -60,6 +60,8 @@ export default function App() {
   // we generate a MUI-theme from state's theme object
   const muiTheme = createMuiTheme(theme);
 
+
+
   return (
     <React.Fragment>
       <ThemeProvider theme={muiTheme}>
@@ -82,8 +84,11 @@ export default function App() {
             </React.Fragment>
           }
 
-          { isState === 'review' && 
+          { isState === 'review' &&
+          <div>
             <ReviewZone reviewState={reviewState} reviewData={appData}/>
+             <ExportData reviewData={appData}/>
+          </div>
           }
 
           {isState === 'export' &&
