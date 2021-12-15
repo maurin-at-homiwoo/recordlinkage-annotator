@@ -3,6 +3,7 @@ import 'typeface-roboto';
 
 import ButtonsClassifier from './ButtonsClassifier.js'
 import Record from './Record.js'
+import MapLinks from './MapLinks.js'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -21,10 +22,10 @@ export default function ReviewZone(props) {
   // Declare a new state contant for the index
   const [pairIndex, setPairIndex] = useState(0);
 
+
   // Declare a new state contant for the index
   const [appData, ] = useState(props.reviewData);
   
-
   const getStats = () => {
 
     var matchCount = 0;
@@ -45,6 +46,8 @@ export default function ReviewZone(props) {
   const onClick = () => {
     if (pairIndex < appData['pairs'].length - 1) {
       setPairIndex(pairIndex + 1);
+
+
     } else {
       console.log("Last record, we are done.")
       console.log(getStats())
@@ -68,13 +71,6 @@ export default function ReviewZone(props) {
     onClick();
   };
 
-  const divStyle = {
-    height: `250px`,
-  };
-
-  const mapUrl = "https://www.openstreetmap.org/#map=17/"+appData['pairs'][pairIndex].fields[0]['b'].value+"/"+appData['pairs'][pairIndex].fields[1]['b'].value
-  console.log(appData['pairs'][pairIndex].fields[0]['b'].value)
-
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
@@ -85,21 +81,11 @@ export default function ReviewZone(props) {
         <Grid item xs={12} sm={6}>
           <Record recordData={appData['pairs'][pairIndex]} recordSource="b"/>
         </Grid>
-
-        <a href={mapUrl}> Link to map </a>
-        <div id="demoMap" style={divStyle}></div>
-        <script>
-            map = new OpenLayers.Map("demoMap");
-            map.addLayer(new OpenLayers.Layer.OSM());
-            map.zoomToMaxExtent();
-        </script>
-
-
         {/* grid item for buttons at the bottom (or top))*/}
         <Grid item xs={12} sm={6}>
           <ButtonsClassifier isMatch={isMatch}  isDistinct={isDistinct}/>
         </Grid>
-
+        <MapLinks x={appData['pairs'][pairIndex].fields[0]['b'].value} y={appData['pairs'][pairIndex].fields[1]['b'].value} />
       </Grid>
     </div>
   );
