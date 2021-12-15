@@ -68,6 +68,13 @@ export default function ReviewZone(props) {
     onClick();
   };
 
+  const divStyle = {
+    height: `250px`,
+  };
+
+  const mapUrl = "https://www.openstreetmap.org/#map=17/"+appData['pairs'][pairIndex].fields[0]['b'].value+"/"+appData['pairs'][pairIndex].fields[1]['b'].value
+  console.log(appData['pairs'][pairIndex].fields[0]['b'].value)
+
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
@@ -77,7 +84,15 @@ export default function ReviewZone(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Record recordData={appData['pairs'][pairIndex]} recordSource="b"/>
-        </Grid>     
+        </Grid>
+
+        <a href={mapUrl}> Link to map </a>
+        <div id="demoMap" style={divStyle}></div>
+        <script>
+            map = new OpenLayers.Map("demoMap");
+            map.addLayer(new OpenLayers.Layer.OSM());
+            map.zoomToMaxExtent();
+        </script>
 
 
         {/* grid item for buttons at the bottom (or top))*/}
@@ -92,3 +107,7 @@ export default function ReviewZone(props) {
 
 
 
+//
+
+//
+//
